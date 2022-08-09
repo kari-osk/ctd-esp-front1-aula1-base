@@ -13,12 +13,23 @@ export function useFormContext() {
 
   return formData;
 }
-//
-/*
-*@author: João Eloi, Katherine Duarte, Thiago Maurat, Paulo Rossi, Karina Osuka
+
+/** 
+ * @author: João Eloi, Katherine Duarte, Thiago Maurat, Paulo Rossi, Karina Osuka
+ *
+ *
+ * Define the initial state of the reducer;
+ * @param {string} state.coach.name: first name of the coach
+ * @param {string} state.coach.lastName: lastname of the coach
+ * @param {string} state.coach.email: email of the coach
+ *
+ * @param {string} state.pokemon.name: name of the pokemon
+ * @param {string} state.pokemon.type: type of the pokemon
+ * @param {string} state.pokemon.element: element of the pokemon
+ * @param {number} state.pokemon.height: height of the pokemon
+ * @param {string} state.pokemon.age: age of the pokemon
  */
 
-//Define the initial state of the reducer
 const initialState = {
   coach: {
     name: "",
@@ -35,12 +46,17 @@ const initialState = {
 };
 
 /**
- * Function reducer, update the state 
+ * Function reducer, update the state by action 
 
- * @param {object} state: contain initial and final state of data
-
+ * @param {object} state: contain state of data
+ * @param {object} state.coach: contain state of coach data
  * @param {object} action: return the action object
- * @returns 
+ * @param {string} action.payload.field: return the updated data field
+ * @param {string} action.payload.value: return the value
+
+ * @param {object} state.pokemon: contain state of pokemon data
+ * @param {object} action: return the action object
+ * 
  */
 
 function reducer(state, action) {

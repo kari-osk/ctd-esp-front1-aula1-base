@@ -22,6 +22,10 @@ const Detalhe = () => {
         <h4>Dados do Pokémon</h4>
         <div className="lista">
           <p>Nome: {state.pokemon.name}</p>
+          <p>Tipo: {state.pokemon.type}</p>
+          <p>Elemento: {state.pokemon.element}</p>
+          <p>Altura: {state.pokemon.height}</p>
+          <p>Idade: {state.pokemon.age}</p>
         </div>
       </section>
       <button

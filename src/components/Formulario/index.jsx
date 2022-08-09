@@ -94,6 +94,50 @@ const Formulario = () => {
                   })
                 }
               />
+              <Input
+                name="type"
+                label="Tipo"
+                value={state.pokemon.type}
+                onChange={(value) =>
+                  dispatch({
+                    type: "UPDATE_POKEMON",
+                    payload: { value, field: "type" }
+                  })
+                }
+              />
+              <Input
+                name="element"
+                label="Elemento"
+                value={state.pokemon.element}
+                onChange={(value) =>
+                  dispatch({
+                    type: "UPDATE_POKEMON",
+                    payload: { value, field: "element" }
+                  })
+                }
+              />
+              <Input
+                name="height"
+                label="Altura"
+                value={state.pokemon.height}
+                onChange={(value) =>
+                  dispatch({
+                    type: "UPDATE_POKEMON",
+                    payload: { value, field: "height" }
+                  })
+                }
+              />
+              <Input
+                name="age"
+                label="Idade"
+                value={state.pokemon.idade}
+                onChange={(value) =>
+                  dispatch({
+                    type: "UPDATE_POKEMON",
+                    payload: { value, field: "age" }
+                  })
+                }
+              />
             </div>
           </div>
           <Detalhe />
