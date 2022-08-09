@@ -13,7 +13,12 @@ export function useFormContext() {
 
   return formData;
 }
+//
+/*
+*@author: João Eloi, Katherine Duarte, Thiago Maurat, Paulo Rossi, Karina Osuka
+ */
 
+//Define the initial state of the reducer
 const initialState = {
   coach: {
     name: "",
@@ -28,6 +33,15 @@ const initialState = {
     age: "",
   },
 };
+
+/**
+ * Function reducer, update the state 
+
+ * @param {object} state: contain initial and final state of data
+
+ * @param {object} action: return the action object
+ * @returns 
+ */
 
 function reducer(state, action) {
   switch (action.type) {
@@ -53,6 +67,8 @@ function reducer(state, action) {
   }
 }
 
+
+//
 export function FormContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
