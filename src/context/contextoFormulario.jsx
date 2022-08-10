@@ -1,7 +1,6 @@
 import { createContext, useReducer, useContext } from "react";
 import PropTypes from 'prop-types';
 
-
 const FormContext = createContext();
 
 export function useFormContext() {
@@ -12,10 +11,8 @@ export function useFormContext() {
       "Para consumir o estado do provider FormContextProvider é necessário ser um componente filho dele."
     );
   }
-
   return formData;
 }
-
 /** 
  * @author: João Eloi, Katherine Duarte, Thiago Maurat, Paulo Rossi, Karina Osuka
  *
@@ -62,7 +59,6 @@ const initialState = {
  * @param {string} action.payload.field: return the updated data field
  * @param {string} action.payload.value: return the value
  */
-
 function reducer(state, action) {
   switch (action.type) {
     case "UPDATE_COACH":
