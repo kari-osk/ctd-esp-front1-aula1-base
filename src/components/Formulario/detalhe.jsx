@@ -1,5 +1,7 @@
 import React from "react";
 import { useFormContext } from "../../context/contextoFormulario";
+import PropTypes from 'prop-types'; // ES6
+
 
 const Detalhe = () => {
   // Aqui devemos pegar os dados do formulário para podermos mostrá-lo em a visualização.
@@ -37,5 +39,21 @@ const Detalhe = () => {
     </div>
   );
 };
+
+
+Detalhe.propTypes = {
+  coach: PropTypes.shape({
+    name: PropTypes.string,
+    lastName: PropTypes.string,
+    email: PropTypes.string,
+  }),
+  pokemon: PropTypes.shape({
+    name: PropTypes.string,
+    type: PropTypes.string,
+    element: PropTypes.string,
+    height: PropTypes.number,
+    age: PropTypes.string,
+  })
+}
 
 export default Detalhe;

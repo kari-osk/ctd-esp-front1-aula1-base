@@ -1,4 +1,6 @@
 import { createContext, useReducer, useContext } from "react";
+import PropTypes from 'prop-types';
+
 
 const FormContext = createContext();
 
@@ -18,7 +20,7 @@ export function useFormContext() {
  * @author: João Eloi, Katherine Duarte, Thiago Maurat, Paulo Rossi, Karina Osuka
  *
  *
- * Define the initial state of the reducer;
+ * Define the initial state:
  * @param {string} state.coach.name: first name of the coach
  * @param {string} state.coach.lastName: lastname of the coach
  * @param {string} state.coach.email: email of the coach
@@ -54,9 +56,11 @@ const initialState = {
  * @param {string} action.payload.field: return the updated data field
  * @param {string} action.payload.value: return the value
 
+ * @param {object} state: contain state of data
  * @param {object} state.pokemon: contain state of pokemon data
  * @param {object} action: return the action object
- * 
+ * @param {string} action.payload.field: return the updated data field
+ * @param {string} action.payload.value: return the value
  */
 
 function reducer(state, action) {
@@ -94,3 +98,9 @@ export function FormContextProvider({ children }) {
     </FormContext.Provider>
   );
 }
+
+FormContextProvider.propTypes = {
+  children: PropTypes.elementType
+}
+
+

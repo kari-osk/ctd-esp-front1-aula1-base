@@ -1,4 +1,4 @@
-import { useState } from "react";
+import PropTypes from 'prop-types';
 
 const Input = ({ name, label, value, onChange, type = "text" }) => {
 
@@ -13,5 +13,13 @@ const Input = ({ name, label, value, onChange, type = "text" }) => {
     </div>
   );
 };
+
+
+Input.propTypes = {
+  name: PropTypes.string,
+  label: PropTypes.string,
+  type: PropTypes.string,
+  onBlur: PropTypes.func
+}
 
 export default Input;

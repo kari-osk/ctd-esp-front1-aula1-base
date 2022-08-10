@@ -6,6 +6,7 @@ import pikachu from "../../assets/pikachu.png";
 import Input from "../Input";
 import Detalhe from "./detalhe";
 import { useFormContext } from "../../context/contextoFormulario";
+import PropTypes from 'prop-types'; // ES6
 
 // Neste componente temos nosso formulário e dentro dele
 // temos os componentes que precisam consumir nosso estado.
@@ -146,5 +147,21 @@ const Formulario = () => {
     </>
   );
 };
+
+Formulario.protoType = {
+  coach: PropTypes.shape({
+    name: PropTypes.string,
+    lastName: PropTypes.string,
+    email: PropTypes.string,
+  }),
+  pokemon: PropTypes.shape({
+    name: PropTypes.string,
+    type: PropTypes.string,
+    element: PropTypes.string,
+    height: PropTypes.number,
+    age: PropTypes.string,
+  })
+}
+
 
 export default Formulario;
