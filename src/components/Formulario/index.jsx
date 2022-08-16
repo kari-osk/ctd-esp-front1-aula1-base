@@ -7,14 +7,21 @@ import Input from "../Input";
 import Detalhe from "./detalhe";
 import { useFormContext } from "../../context/contextoFormulario";
 import PropTypes from 'prop-types'; // ES6
+import { useQuery } from 'react-query';
+import Select from "../Select";
 
 // Neste componente temos nosso formulário e dentro dele
 // temos os componentes que precisam consumir nosso estado.
 // Lembre-se qual é o passo que devemos dar para que nosso
 // componentes podem consumir um estado global.
 
+
 const Formulario = () => {
   const { state, dispatch } = useFormContext();
+
+  const { isLoading, error, data } = useQuery(['getType'], () =>
+    fetch('https://pokeapi.co/api/v2/type/').then(resp => resp.json))
+
 
   return (
     <>
@@ -95,7 +102,7 @@ const Formulario = () => {
                   })
                 }
               />
-              <Input
+              {/* <Input
                 name="type"
                 label="Tipo"
                 value={state.pokemon.type}
@@ -105,7 +112,15 @@ const Formulario = () => {
                     payload: { value, field: "type" }
                   })
                 }
+              /> */}
+
+              <Select
+                label="Tipo"
+                name='type'
+                disabled={isLoading || error}
+
               />
+
               <Input
                 name="element"
                 label="Elemento"
