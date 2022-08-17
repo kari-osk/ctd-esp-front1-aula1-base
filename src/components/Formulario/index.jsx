@@ -65,22 +65,22 @@ const Formulario = () => {
               <Input
                 name="nome"
                 label="Nome"
-                value={state.coach.name}
+                value={state.coach.nome}
                 onChange={(value) =>
                   dispatch({
                     type: "UPDATE_COACH",
-                    payload: { value, field: "name" },
+                    payload: { value, field: "nome" },
                   })
                 }
               />
               <Input
-                name="sobrenome"
-                label="Sobrenome"
-                value={state.coach.lastName}
+                name="apelido"
+                label="Apelido"
+                value={state.coach.apelido}
                 onChange={(value) =>
                   dispatch({
                     type: "UPDATE_COACH",
-                    payload: { value, field: "lastName" },
+                    payload: { value, field: "apelido" },
                   })
                 }
               />
@@ -106,11 +106,11 @@ const Formulario = () => {
               <Input
                 name="nomePokemon"
                 label="Nome"
-                value={state.pokemon.name}
+                value={state.pokemon.nomePokemon}
                 onChange={(value) =>
                   dispatch({
                     type: "UPDATE_POKEMON",
-                    payload: { value, field: "name" }
+                    payload: { value, field: "nomePokemon" }
                   })
                 }
               />
@@ -123,42 +123,42 @@ const Formulario = () => {
                 onChange={(value) =>
                   dispatch({
                     type: "UPDATE_POKEMON",
-                    payload: { value, field: "type" }
+                    payload: { value, field: "tipoPokemon" }
                   })
                 }
 
               />
 
               <Input
-                name="element"
+                name="elementoPokemon"
                 label="Elemento"
                 value={state.pokemon.element}
                 onChange={(value) =>
                   dispatch({
                     type: "UPDATE_POKEMON",
-                    payload: { value, field: "element" }
+                    payload: { value, field: "elementoPokemon" }
                   })
                 }
               />
               <Input
-                name="height"
+                name="alturaPokemon"
                 label="Altura"
                 value={state.pokemon.height}
                 onChange={(value) =>
                   dispatch({
                     type: "UPDATE_POKEMON",
-                    payload: { value, field: "height" }
+                    payload: { value, field: "alturaPokemon" }
                   })
                 }
               />
               <Input
-                name="age"
+                name="idadePokemon"
                 label="Idade"
                 value={state.pokemon.idade}
                 onChange={(value) =>
                   dispatch({
                     type: "UPDATE_POKEMON",
-                    payload: { value, field: "age" }
+                    payload: { value, field: "idadePokemon" }
                   })
                 }
               />

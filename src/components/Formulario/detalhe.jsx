@@ -1,15 +1,48 @@
-import React from "react";
-import { useFormContext } from "../../context/contextoFormulario";
+import React, { useContext, useEffect } from "react";
+import { ContextoFormulario } from "../../context/contextoFormulario";
 import PropTypes from 'prop-types'; // ES6
+import { useMutation } from 'react-query'
 
+const enviarFormulario = async (data) => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
 
-
-
+  if (response.ok) {
+    return response.json();
+  } else {
+    throw new Error('Erros ao enviar o formulario');
+  }
+}
 
 
 const Detalhe = () => {
   // Aqui devemos pegar os dados do formulário para podermos mostrá-lo em a visualização.
-  const { state } = useFormContext();
+  const { state } = useContext(ContextoFormulario);
+
+  const { data, isLoading, isError, mutate, isSuccess } = useMutation(enviarFormulario);
+
+  const { nome, apelido, email } = state?.coach;
+
+  const {
+    nomePokemon,
+    tipoPokemon,
+    elementoPokemon,
+    alturaPokemon,
+    idadePokemon,
+  } = state?.pokemon;
+
+  useEffect(() => {
+    if (isSuccess) {
+      alert(`Formulário enviado com sucesso, id ${data ? data?.id : ''}`);
+    } else if (isError) {
+      alert('Erro ao enviar o formulário. Por favor tenten novamente');
+    }
+  }, [isSuccess, data, isError]);
 
   return (
     <div className="detalhe-formulario">
@@ -19,26 +52,25 @@ const Detalhe = () => {
       <section className="dados-cliente">
         <h4>Dados do Treinador</h4>
         <div className="lista">
-          <p>Nome: {state.coach.name}</p>
-          <p>Sobrenome: {state.coach.lastName}</p>
-          <p>Email: {state.coach.email}</p>
+          <p>Nome: {nome}</p>
+          <p>Apelido: {apelido}</p>
+          <p>Email: {email}</p>
         </div>
       </section>
       <section className="dados-cliente">
         <h4>Dados do Pokémon</h4>
         <div className="lista">
-          <p>Nome: {state.pokemon.name}</p>
-          <p>Tipo: {state.pokemon.type}</p>
-          <p>Elemento: {state.pokemon.element}</p>
-          <p>Altura: {state.pokemon.height}</p>
-          <p>Idade: {state.pokemon.age}</p>
+          <p>Nome: {nomePokemon}</p>
+          <p>Tipo: {tipoPokemon}</p>
+          <p>Elemento: {elementoPokemon}</p>
+          <p>Altura: {alturaPokemon}</p>
+          <p>Idade: {idadePokemon}</p>
         </div>
       </section>
       <button
         className="botao-enviar"
-        onClick={() => alert("Solicitação enviada :)")}
-      >
-        Enviar Solicitação
+        onClick={() => mutate(state)}>
+        {isLoading ? 'Enviando formulario...' : 'Enviar Solicitação'}
       </button>
     </div>
   );

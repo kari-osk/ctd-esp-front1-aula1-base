@@ -1,10 +1,10 @@
 import { createContext, useReducer, useContext } from "react";
 import PropTypes from 'prop-types';
 
-const FormContext = createContext();
+export const ContextoFormulario = createContext();
 
 export function useFormContext() {
-  const formData = useContext(FormContext);
+  const formData = useContext(ContextoFormulario);
 
   if (!formData) {
     throw new Error(
@@ -16,19 +16,22 @@ export function useFormContext() {
 /** 
  * @author: João Eloi, Katherine Duarte, Thiago Maurat, Paulo Rossi, Karina Osuka
  *
- *
- * Define the initial state:
- * @param {string} state.coach.name: first name of the coach
- * @param {string} state.coach.lastName: lastname of the coach
- * @param {string} state.coach.email: email of the coach
- *
- * @param {string} state.pokemon.name: name of the pokemon
- * @param {string} state.pokemon.type: type of the pokemon
- * @param {string} state.pokemon.element: element of the pokemon
- * @param {number} state.pokemon.height: height of the pokemon
- * @param {string} state.pokemon.age: age of the pokemon
+ * Estado inicial do formulário.
+ * @type {{
+ *    treinador:{
+ *      nome: string,
+ *      apelido: string,
+ *      email: string
+ *    },
+ *    pokemon: {
+ *      nomePokemon: string,
+ *      tipoPokemon: string,
+ *      elementoPokemon: string,
+ *      alturaPokemon: string,
+ *      idadePokemon: string
+ *   }
+ * }}}
  */
-
 const initialState = {
   coach: {
     name: "",
@@ -84,14 +87,13 @@ function reducer(state, action) {
 }
 
 
-//
 export function FormContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <FormContext.Provider value={{ state, dispatch }}>
+    <ContextoFormulario.Provider value={{ state, dispatch }}>
       {children}
-    </FormContext.Provider>
+    </ContextoFormulario.Provider>
   );
 }
 
