@@ -10,21 +10,21 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="App">
-        <Routes>
-          <Route path="/" exact element={<Inicio />} />
-          <Route
-            path="/formularioEntrada"
-            element={
-              <FormContextProvider>
+    <div className="App">
+      <QueryClientProvider client={queryClient}>
+        <FormContextProvider>
+          <Routes>
+            <Route path="/" exact element={<Inicio />} />
+            <Route
+              path="/formularioEntrada"
+              element={
                 <Formulario />
-              </FormContextProvider>
-            }
-          />
-        </Routes>
-      </div>
-    </QueryClientProvider>
+              }
+            />
+          </Routes>
+        </FormContextProvider>
+      </QueryClientProvider>
+    </div >
   );
 }
 

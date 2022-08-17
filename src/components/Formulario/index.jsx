@@ -8,7 +8,7 @@ import Detalhe from "./detalhe";
 import { useFormContext } from "../../context/contextoFormulario";
 import PropTypes from 'prop-types'; // ES6
 import { useQuery } from 'react-query';
-import Select from "../Select";
+import SelectType from "../SelectType";
 
 // Neste componente temos nosso formulário e dentro dele
 // temos os componentes que precisam consumir nosso estado.
@@ -16,12 +16,24 @@ import Select from "../Select";
 // componentes podem consumir um estado global.
 
 
+// const { isLoading, error, data } = useQuery('getType', () =>
+//   fetch('https://pokeapi.co/api/v2/type/').then((res) => res.json))
+
+const getpokemonTypes = async () => {
+  const response = await fetch('https://pokeapi.co/api/v2/type');
+  const data = await response.json();
+  return data.results;
+};
+
+
 const Formulario = () => {
   const { state, dispatch } = useFormContext();
 
-  const { isLoading, error, data } = useQuery(['getType'], () =>
-    fetch('https://pokeapi.co/api/v2/type/').then(resp => resp.json))
-
+  const {
+    data: tipos,
+    isLoading,
+    isError,
+  } = useQuery('pokemonTypes', getpokemonTypes);
 
   return (
     <>
@@ -102,22 +114,18 @@ const Formulario = () => {
                   })
                 }
               />
-              {/* <Input
-                name="type"
-                label="Tipo"
-                value={state.pokemon.type}
+
+              <SelectType
+                name='tipoPokemon'
+                label='Tipo'
+                disabled={isLoading || isError}
+                options={tipos}
                 onChange={(value) =>
                   dispatch({
                     type: "UPDATE_POKEMON",
                     payload: { value, field: "type" }
                   })
                 }
-              /> */}
-
-              <Select
-                label="Tipo"
-                name='type'
-                disabled={isLoading || error}
 
               />
 

@@ -3,6 +3,10 @@ import { useFormContext } from "../../context/contextoFormulario";
 import PropTypes from 'prop-types'; // ES6
 
 
+
+
+
+
 const Detalhe = () => {
   // Aqui devemos pegar os dados do formulário para podermos mostrá-lo em a visualização.
   const { state } = useFormContext();
