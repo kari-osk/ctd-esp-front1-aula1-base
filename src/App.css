@@ -219,3 +219,46 @@ h1 {
 .retorna {
   justify-self: end;
 }
+
+.popup-especie {
+  width: 40vw;
+  height: 60vh;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: whitesmoke;
+  border-radius: 12px;
+  border: 2px solid lightgrey;
+  box-shadow: 3px 3px 3px 3px darkgray;
+}
+
+.receptor-especies {
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.botao-selecionar-especies {
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.botao-selecionar-especies:hover {
+  background-color: lightgray;
+}
+
+.botoes-especie {
+  margin: 0.5rem;
+  padding: 0.6rem;
+  border-radius: 10px;
+  background-color: #ed5564;
+  color: whitesmoke;
+  cursor: pointer;
+  border: 2px solid #ed5564;
+  box-shadow: 2px 2px 2px 2px darkgray;
+}
+
+.botoes-especie:hover {
+  box-shadow: none;
+}

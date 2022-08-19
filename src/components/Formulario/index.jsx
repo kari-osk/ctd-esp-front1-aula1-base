@@ -9,6 +9,7 @@ import { useFormContext } from "../../context/contextoFormulario";
 import PropTypes from 'prop-types'; // ES6
 import { useQuery } from 'react-query';
 import SelectType from "../SelectType";
+import InputEspecie from "../InputEspecie";
 
 // Neste componente temos nosso formulário e dentro dele
 // temos os componentes que precisam consumir nosso estado.
@@ -162,6 +163,8 @@ const Formulario = () => {
                   })
                 }
               />
+
+              <InputEspecie />
             </div>
           </div>
           <Detalhe />

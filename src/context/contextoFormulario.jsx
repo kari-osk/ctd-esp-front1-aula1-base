@@ -90,6 +90,18 @@ function reducer(state, action) {
 export function FormContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+
+  const handleInputBlur = (type, valorInput) => {
+    const { campo, valor } = valorInput;
+
+    dispatch({
+      type,
+      payload: {
+        [campo]: valor,
+      }
+    })
+  }
+
   return (
     <ContextoFormulario.Provider value={{ state, dispatch }}>
       {children}
